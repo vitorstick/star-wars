@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FilmInterface } from '../models/films.interface';
 import { MultiResult } from '../models/multi-result.interface';
+import { PeopleInterface } from '../models/people.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -30,11 +31,15 @@ export class FilmsApiService {
     return this.httpClient.get(`https://swapi.dev/api/planets/${id}`);
   }
 
-  getPeople() {
-    return this.httpClient.get('https://swapi.dev/api/people');
+  getPeople(): Observable<MultiResult<PeopleInterface>> {
+    return this.httpClient.get<MultiResult<PeopleInterface>>(
+      'https://swapi.dev/api/people'
+    );
   }
 
-  getPerson(id: number) {
-    return this.httpClient.get(`https://swapi.dev/api/people/${id}`);
+  getPerson(id: string): Observable<PeopleInterface> {
+    return this.httpClient.get<PeopleInterface>(
+      `https://swapi.dev/api/people/${id}`
+    );
   }
 }

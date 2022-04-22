@@ -1,1 +1,5 @@
-<p>persons-list works!</p>
+<section class="persons-container" *ngIf="people$ | async as people">
+  <ng-container *ngFor="let person of people">
+    <app-person [person]="person"></app-person>
+  </ng-container>
+</section>

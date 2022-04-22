@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WorkInProgressComponent } from './components/work-in-progress/work-in-progress.component';
 import { CONFIG } from './config/config';
 import { FilmsResolver } from './services/films.resolver';
+import { PersonsResolver } from './services/persons.resolver';
 
 const routes: Routes = [
   {
@@ -20,7 +21,11 @@ const routes: Routes = [
   },
   {
     path: CONFIG.NAVIGATION.PEOPLE,
-    component: WorkInProgressComponent,
+    loadChildren: () =>
+      import('./persons/persons.module').then((m) => m.PersonsModule),
+    resolve: {
+      people: PersonsResolver,
+    },
   },
   {
     path: CONFIG.NAVIGATION.PLANETS,

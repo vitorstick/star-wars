@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsListComponent } from './containers/persons-list/persons-list.component';
 import { PersonDetailComponent } from './containers/person-detail/person-detail.component';
+import { PersonComponent } from './components/person/person.component';
 
 
 @NgModule({
   declarations: [
     PersonsListComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    PersonComponent
   ],
   imports: [
     CommonModule,

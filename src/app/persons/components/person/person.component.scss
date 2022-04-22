@@ -1,0 +1,9 @@
+.person {
+  display: flex;
+  flex-direction: row;
+  padding: 4px 8px;
+
+  > * {
+    padding: 0 4px;
+  }
+}

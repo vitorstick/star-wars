@@ -16,9 +16,5 @@ export class FilmsComponent implements OnInit {
 
   ngOnInit(): void {
     this.films$ = this.route.data.pipe(map((data) => data.films.results));
-
-    this.films$.subscribe((films) => {
-      console.log(films);
-    });
   }
 }

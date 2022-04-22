@@ -1,0 +1,8 @@
+<div class="person">
+  <div class="person__title">{{ person?.name }}</div>
+  <div class="person-separator">/</div>
+  <div class="person__director">{{ person?.created | date: "small" }}</div>
+  <div class="person__release-date">{{ person?.birth_year }}</div>
+
+  <a [routerLink]="personLink">More details</a>
+</div>
