@@ -1,0 +1,17 @@
+.film-detail {
+  display: flex;
+  flex-direction: column;
+
+  &__prop {
+    padding: 8px 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__button {
+    padding: 16px;
+    display: flex;
+    justify-content: end;
+  }
+}

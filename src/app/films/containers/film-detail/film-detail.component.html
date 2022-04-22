@@ -1,0 +1,12 @@
+<section class="film-detail" *ngIf="filmDetail$ | async as detail">
+  <h4 class="film-detail__prop">Title: {{ detail?.title }}</h4>
+  <div class="film-detail__prop">Episode_id: {{ detail?.episode_id }}</div>
+  <div class="film-detail__prop">
+    opening_crawl: {{ detail?.opening_crawl }}
+  </div>
+  <div class="film-detail__prop">director: {{ detail?.director }}</div>
+  <div class="film-detail__prop">producer: {{ detail?.producer }}</div>
+  <div class="film-detail__button">
+    <button class="button" type="button" (click)="back()">Back</button>
+  </div>
+</section>

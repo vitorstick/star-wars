@@ -1,0 +1,5 @@
+<section class="films-container" *ngIf="films$ | async as films">
+  <ng-container *ngFor="let film of films">
+    <app-film [film]="film"></app-film>
+  </ng-container>
+</section>
