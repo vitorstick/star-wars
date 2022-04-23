@@ -8,4 +8,5 @@ export interface PeopleInterface {
   gender: string;
   created: Date;
   url: string;
+  starships: string[];
 }

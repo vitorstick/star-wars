@@ -1,1 +1,6 @@
-<p>person-detail works!</p>
+<section class="person-detail" >
+  <app-detail [detail]="personDetail$ | async" [starShips]="starShips$ | async"></app-detail>
+  <div class="person-detail__button">
+    <button class="button" type="button" (click)="back()">Back</button>
+  </div>
+</section>

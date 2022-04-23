@@ -1,0 +1,13 @@
+<div class="person-detail">
+  <h4 class="person-detail__prop">Name: {{ detail?.name }}</h4>
+  <div class="person-detail__prop">Planet: {{ detail?.homeworld }}</div>
+  <div class="person-detail__prop">
+    Height: {{ detail?.height | personHeight}}
+  </div>
+  <div class="person-detail__prop">
+    <h5>StarShips:</h5>
+    <div *ngFor="let ship of starShips">
+      <app-starship [starShip]="ship"></app-starship>
+    </div>
+  </div>
+</div>

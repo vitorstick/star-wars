@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PersonDetailComponent } from './containers/person-detail/person-detail.component';
 import { PersonsListComponent } from './containers/persons-list/persons-list.component';
+import { PeopleResolver } from './services/people.resolver';
 
 const routes: Routes = [
   {
@@ -11,9 +12,9 @@ const routes: Routes = [
   {
     path: ':personId',
     component: PersonDetailComponent,
-    // resolve: {
-    //   film: PersonDetailResolver,
-    // },
+    resolve: {
+      person: PeopleResolver,
+    },
   },
 ];
 

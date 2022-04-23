@@ -5,17 +5,20 @@ import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsListComponent } from './containers/persons-list/persons-list.component';
 import { PersonDetailComponent } from './containers/person-detail/person-detail.component';
 import { PersonComponent } from './components/person/person.component';
-
+import { PeopleResolver } from './services/people.resolver';
+import { PersonHeightPipe } from './pipes/person-height.pipe';
+import { DetailComponent } from './components/detail/detail.component';
+import { StarShipsModule } from '../star-ships/star-ships.module';
 
 @NgModule({
   declarations: [
     PersonsListComponent,
     PersonDetailComponent,
-    PersonComponent
+    PersonComponent,
+    PersonHeightPipe,
+    DetailComponent,
   ],
-  imports: [
-    CommonModule,
-    PersonsRoutingModule
-  ]
+  imports: [CommonModule, PersonsRoutingModule, StarShipsModule],
+  providers: [PeopleResolver],
 })
-export class PersonsModule { }
+export class PersonsModule {}

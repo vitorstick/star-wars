@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { FilmInterface } from '../models/films.interface';
 import { MultiResult } from '../models/multi-result.interface';
 import { PeopleInterface } from '../models/people.interface';
+import { PlanetInterface } from '../models/planel.interface';
+import { StarShipInterface } from '../models/starship.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +29,11 @@ export class FilmsApiService {
     return this.httpClient.get('https://swapi.dev/api/planets');
   }
 
-  getPlanet(id: number) {
-    return this.httpClient.get(`https://swapi.dev/api/planets/${id}`);
+  getPlanet(url: string): Observable<PlanetInterface> {
+    return this.httpClient.get<PlanetInterface>(`${url}`);
+  }
+  getStarShip(url: string): Observable<StarShipInterface> {
+    return this.httpClient.get<StarShipInterface>(`${url}`);
   }
 
   getPeople(): Observable<MultiResult<PeopleInterface>> {
