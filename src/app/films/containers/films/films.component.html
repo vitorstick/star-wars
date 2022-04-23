@@ -1,5 +1,14 @@
-<section class="films-container" *ngIf="films$ | async as films">
+<section class="persons-container" *ngIf="filmsAfterSearch$ | async as films; else regularList">
   <ng-container *ngFor="let film of films">
     <app-film [film]="film"></app-film>
   </ng-container>
 </section>
+
+<ng-template #regularList>
+  <section class="films-container" *ngIf="films$ | async as films">
+    <ng-container *ngFor="let film of films">
+      <app-film [film]="film"></app-film>
+    </ng-container>
+  </section>
+</ng-template>
+

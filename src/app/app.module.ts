@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { WorkInProgressComponent } from './components/work-in-progress/work-in-progress.component';
 import { TopnavComponent } from './containers/topnav/topnav.component';
 import { NavMenuComponent } from './containers/nav-menu/nav-menu.component';
+import { SEARCH_CONFIG } from './config/token-config';
+import { CONFIG } from './config/config';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NavMenuComponent } from './containers/nav-menu/nav-menu.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: SEARCH_CONFIG, useValue: { search: CONFIG.SEARCH_CONF } },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

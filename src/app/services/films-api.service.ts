@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FilmInterface } from '../models/films.interface';
 import { MultiResult } from '../models/multi-result.interface';
@@ -13,9 +13,17 @@ import { StarShipInterface } from '../models/starship.interface';
 export class FilmsApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getFilms(): Observable<MultiResult<FilmInterface>> {
+  getFilms(
+    search: string | null = null
+  ): Observable<MultiResult<FilmInterface>> {
+    let queryParams = new HttpParams();
+    if (search) {
+      queryParams = queryParams.set('search', search);
+    }
+
     return this.httpClient.get<MultiResult<FilmInterface>>(
-      'https://swapi.dev/api/films'
+      'https://swapi.dev/api/films',
+      { params: queryParams }
     );
   }
 
@@ -36,9 +44,16 @@ export class FilmsApiService {
     return this.httpClient.get<StarShipInterface>(`${url}`);
   }
 
-  getPeople(): Observable<MultiResult<PeopleInterface>> {
+  getPeople(
+    search: string | null = null
+  ): Observable<MultiResult<PeopleInterface>> {
+    let queryParams = new HttpParams();
+    if (search) {
+      queryParams = queryParams.set('search', search);
+    }
     return this.httpClient.get<MultiResult<PeopleInterface>>(
-      'https://swapi.dev/api/people'
+      'https://swapi.dev/api/people',
+      { params: queryParams }
     );
   }
 

@@ -6,6 +6,13 @@
   </div>
   <div class="film-detail__prop">director: {{ detail?.director }}</div>
   <div class="film-detail__prop">producer: {{ detail?.producer }}</div>
+  <div class="film-detail__prop" >
+    <h5>StarShips:</h5>
+    <div *ngFor="let ship of starShips$ | async as list">
+      <app-starship [starShip]="ship"></app-starship>
+    </div>
+  </div>
+
   <div class="film-detail__button">
     <button class="button" type="button" (click)="back()">Back</button>
   </div>
