@@ -1,7 +1,7 @@
 <div class="topnav">
-  <a>Search 1</a>
-  <a>Search 2</a>
-  <a>Search 3</a>
+  <ng-container *ngFor="let item of searchItems; let i = index">
+    <a (click)="setSearch(i)">Search {{i + 1}}</a>
+  </ng-container>
   <div class="search-container">
     <form [formGroup]="searchForm">
       <input type="text" placeholder="Search.." name="search" formControlName="search" />

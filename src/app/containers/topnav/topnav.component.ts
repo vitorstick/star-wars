@@ -18,6 +18,8 @@ import { SearchService } from 'src/app/services/search.service';
 export class TopnavComponent implements OnInit {
   searchForm!: FormGroup;
 
+  searchItems: string[] = [];
+
   constructor(
     @Inject(SEARCH_CONFIG) private config: SearchTokenInterface,
     private searchService: SearchService
@@ -28,11 +30,22 @@ export class TopnavComponent implements OnInit {
   }
 
   search(): void {
-    console.log(this.searchForm.controls.search?.value);
     if (this.searchForm.valid) {
       this.searchService.setNewSearch(this.searchForm.controls.search?.value);
+      this.setSearchItems(this.searchForm.controls.search?.value);
     }
     this.searchForm.controls.search?.reset();
+  }
+
+  setSearch(i: number) {
+    this.searchService.setNewSearch(this.searchItems[i]);
+  }
+
+  private setSearchItems(search: string): void {
+    if (this.searchItems.length >= this.config.search) {
+      this.searchItems.shift();
+    }
+    this.searchItems.push(search);
   }
 
   private createSearchForm(): void {

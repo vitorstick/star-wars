@@ -1,3 +1,3 @@
 export interface SearchTokenInterface {
-  search: string;
+  search: number;
 }
