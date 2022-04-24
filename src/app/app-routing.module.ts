@@ -23,9 +23,6 @@ const routes: Routes = [
     path: CONFIG.NAVIGATION.PEOPLE,
     loadChildren: () =>
       import('./persons/persons.module').then((m) => m.PersonsModule),
-    resolve: {
-      people: PersonsResolver,
-    },
   },
   {
     path: CONFIG.NAVIGATION.PLANETS,

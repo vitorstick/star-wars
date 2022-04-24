@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { FilmInterface } from 'src/app/models/films.interface';
 import { FilmsApiService } from 'src/app/services/films-api.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -24,14 +24,11 @@ export class FilmsComponent implements OnInit {
   ngOnInit(): void {
     this.films$ = this.route.data.pipe(map((data) => data.films.results));
 
-    this.filmsAfterSearch$ = this.searchService
-      .getSearch()
-      .pipe(
-        switchMap((search) =>
-          this.FilmsApiService.getFilms(search).pipe(
-            map((data) => data.results)
-          )
-        )
-      );
+    this.filmsAfterSearch$ = this.searchService.getSearch().pipe(
+      filter((search) => !!search),
+      switchMap((search) =>
+        this.FilmsApiService.getFilms(search).pipe(map((data) => data.results))
+      )
+    );
   }
 }

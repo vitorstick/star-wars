@@ -1,5 +1,5 @@
 <div class="topnav">
-  <ng-container *ngFor="let item of searchItems; let i = index">
+  <ng-container *ngFor="let search of searchItems$ | async; let i = index">
     <a (click)="setSearch(i)">Search {{i + 1}}</a>
   </ng-container>
   <div class="search-container">

@@ -16,15 +16,15 @@ export class FilmsApiService {
   getFilms(
     search: string | null = null
   ): Observable<MultiResult<FilmInterface>> {
+    const url: string = 'https://swapi.dev/api/films';
     let queryParams = new HttpParams();
     if (search) {
       queryParams = queryParams.set('search', search);
     }
 
-    return this.httpClient.get<MultiResult<FilmInterface>>(
-      'https://swapi.dev/api/films',
-      { params: queryParams }
-    );
+    return this.httpClient.get<MultiResult<FilmInterface>>(url, {
+      params: queryParams,
+    });
   }
 
   getFilm(id: string): Observable<FilmInterface> {
@@ -44,16 +44,10 @@ export class FilmsApiService {
     return this.httpClient.get<StarShipInterface>(`${url}`);
   }
 
-  getPeople(
-    search: string | null = null
-  ): Observable<MultiResult<PeopleInterface>> {
-    let queryParams = new HttpParams();
-    if (search) {
-      queryParams = queryParams.set('search', search);
-    }
+  getPeople(params?: HttpParams): Observable<MultiResult<PeopleInterface>> {
     return this.httpClient.get<MultiResult<PeopleInterface>>(
       'https://swapi.dev/api/people',
-      { params: queryParams }
+      { params }
     );
   }
 

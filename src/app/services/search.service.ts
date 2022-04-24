@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SEARCH_CONFIG } from '../config/token-config';
 import { SearchTokenInterface } from '../models/search-token.interface';
 
@@ -7,11 +7,11 @@ import { SearchTokenInterface } from '../models/search-token.interface';
   providedIn: 'root',
 })
 export class SearchService {
-  private _searchSubjec$ = new Subject<string>();
+  private _searchSubjec$ = new BehaviorSubject<string | null>(null);
 
   constructor(@Inject(SEARCH_CONFIG) private config: SearchTokenInterface) {}
 
-  setNewSearch(search: string): void {
+  setNewSearch(search: string | null): void {
     this._searchSubjec$.next(search);
   }
 

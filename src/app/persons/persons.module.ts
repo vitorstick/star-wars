@@ -9,6 +9,7 @@ import { PeopleResolver } from './services/people.resolver';
 import { PersonHeightPipe } from './pipes/person-height.pipe';
 import { DetailComponent } from './components/detail/detail.component';
 import { StarShipsModule } from '../star-ships/star-ships.module';
+import { UiModule } from '../ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { StarShipsModule } from '../star-ships/star-ships.module';
     PersonHeightPipe,
     DetailComponent,
   ],
-  imports: [CommonModule, PersonsRoutingModule, StarShipsModule],
+  imports: [CommonModule, PersonsRoutingModule, StarShipsModule, UiModule],
   providers: [PeopleResolver],
 })
 export class PersonsModule {}

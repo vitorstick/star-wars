@@ -1,13 +1,6 @@
-<section class="persons-container" *ngIf="peopleAfterSearch$ | async as people; else regularList">
+<section class="persons-container" *ngIf="people$ | async as people">
   <ng-container *ngFor="let person of people">
     <app-person [person]="person"></app-person>
   </ng-container>
 </section>
-
-<ng-template #regularList>
-  <section class="persons-container" *ngIf="people$ | async as people">
-    <ng-container *ngFor="let person of people">
-      <app-person [person]="person"></app-person>
-    </ng-container>
-  </section>
-</ng-template>
+<app-pagination [pagination]="pagination$ | async" (navigate)="navigate($event)"></app-pagination>

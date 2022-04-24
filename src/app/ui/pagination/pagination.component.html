@@ -1,0 +1,9 @@
+<div class="pagination-container">
+  <button class="pagination-button" (click)="previousPage()" [disabled]="!hasPreviousPage">
+    Previous
+  </button>
+
+  <button class="pagination-button" (click)="nextPage()" [disabled]="!hasNextPage">
+    Next
+  </button>
+</div>
